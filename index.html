@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Édito A1 · 2ᵉ édition — Livre interactif</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="btn-sidebar" class="icon-btn" title="Índice de unidades">☰</button>
+    <div class="topbar-title">
+      <span class="brand">Édito A1</span>
+      <span class="book" id="book-subtitle">Livre · 2ᵉ édition</span>
+    </div>
+
+    <div class="book-switcher" id="book-switcher" role="tablist" aria-label="Elegir libro"></div>
+
+    <div class="pager">
+      <button id="btn-prev" class="icon-btn" title="Página anterior (←)">‹</button>
+      <span class="page-indicator">
+        <input id="page-input" type="number" min="1" max="193" value="11">
+        <span class="page-total" id="page-total">/ 193</span>
+      </span>
+      <button id="btn-next" class="icon-btn" title="Página siguiente (→)">›</button>
+    </div>
+
+    <div class="toolbar">
+      <span id="audio-count" class="audio-count" title="Número de audios en esta página"></span>
+      <button id="btn-zoom-out" class="icon-btn" title="Alejar">−</button>
+      <button id="btn-zoom-in" class="icon-btn" title="Acercar">+</button>
+      <button id="btn-fit" class="icon-btn" title="Ajustar a la pantalla">⤢</button>
+      <button id="btn-show-audio" class="icon-btn active" title="Mostrar/ocultar pictogramas de audio">🎧</button>
+      <button id="btn-annotate" class="icon-btn" title="Anotar: texto y marcador">🖊️</button>
+    </div>
+  </header>
+
+  <div id="anno-bar" class="anno-bar" hidden>
+    <button id="anno-marker" class="anno-tool tool active" data-tool="marker" title="Marcador (resaltar)">🖍️ Marcador</button>
+    <button id="anno-text" class="anno-tool tool" data-tool="text" title="Texto (escribir)">✏️ Texto</button>
+    <button id="anno-erase" class="anno-tool tool" data-tool="erase" title="Borrar (clic sobre una anotación)">🧽 Borrar</button>
+    <span class="anno-sep"></span>
+    <label class="anno-lbl">Color</label>
+    <input id="anno-color" type="color" value="#ffeb3b" title="Color">
+    <label class="anno-lbl">Tamaño</label>
+    <input id="anno-size" type="range" min="1" max="100" value="40" title="Tamaño">
+    <span class="anno-sep"></span>
+    <button id="anno-clear" class="anno-tool" title="Borrar todas las anotaciones de esta página">🗑️ Limpiar</button>
+    <button id="anno-done" class="anno-tool done" title="Salir del modo anotación">✓ Listo</button>
+  </div>
+
+  <div class="layout">
+    <nav id="sidebar" class="sidebar">
+      <h2>Unidades</h2>
+      <ul id="toc-list"></ul>
+    </nav>
+
+    <main class="viewer" id="viewer">
+      <div class="page-stage" id="page-stage">
+        <div class="page-wrap" id="page-wrap">
+          <img id="page-img" alt="Página del libro" draggable="false">
+          <canvas id="anno-canvas" class="anno-canvas"></canvas>
+          <div id="anno-texts" class="anno-texts"></div>
+          <div class="audio-overlay" id="audio-overlay"></div>
+          <button id="nav-prev" class="nav-zone nav-prev" title="Página anterior" aria-label="Página anterior"></button>
+          <button id="nav-next" class="nav-zone nav-next" title="Página siguiente" aria-label="Página siguiente"></button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="player" id="player" hidden>
+    <button id="btn-play" class="play-btn" title="Reproducir/Pausar">▶</button>
+    <div class="player-info">
+      <div class="track-title">
+        <span class="track-badge" id="track-badge">Pista 2</span>
+        <span id="track-label">—</span>
+      </div>
+      <div class="track-sub" id="track-sub"></div>
+    </div>
+    <div class="player-time">
+      <span id="time-cur">0:00</span>
+      <span class="sep">/</span>
+      <span id="time-dur">0:00</span>
+    </div>
+    <input type="range" id="seek" class="seek" min="0" max="1000" value="0" step="1">
+    <button id="btn-transcript" class="icon-btn small" title="Ver transcripción">💬</button>
+  </div>
+
+  <div class="transcript" id="transcript" hidden>
+    <div class="transcript-head">
+      <span id="transcript-title"></span>
+      <button id="btn-transcript-close" class="icon-btn small">✕</button>
+    </div>
+    <pre id="transcript-body"></pre>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

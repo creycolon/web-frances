@@ -1,0 +1,18 @@
+[Unit]
+Description=Édito A1 (visor web + audio)
+After=network.target
+
+[Service]
+# Cambia /ruta/a/web-frances por la carpeta real de la app
+WorkingDirectory=/mnt/sda2/github/web-frances
+# Usa la ruta de node: compruébala con `which node`
+ExecStart=/usr/bin/node serve.js
+Restart=on-failure
+RestartSec=5
+Environment=PORT=8080
+# (opcional) ejecutar con tu usuario en vez de root:
+# User=TU_USUARIO
+# Group=TU_USUARIO
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+# Archivos de trabajo y herramientas (no forman parte de la app)
+_work/
+node_modules/
+*.log
+.DS_Store
+*.rar
